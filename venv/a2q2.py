@@ -15,13 +15,22 @@ def distance(name):
     :post-condition: converts simple text in .txt file to a list of list
     :return: numerical displacement value
     """
+    final = 0
     instructions = []
     f = open(name, 'r')
     r = f.read()
     lines = r.splitlines()
     for x in lines:
         instructions.append(x.split())
-    return instructions
+    for list1 in instructions:
+        for value in list1:
+            if value == 'R':
+                final += 1
+            else:
+                final -= 1
+        print(abs(final))
+        final = 0
+
 
 distance(example)
 
