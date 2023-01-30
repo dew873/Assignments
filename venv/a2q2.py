@@ -6,6 +6,8 @@
 
 # asks user for file name
 example = input("Enter file name: ")
+
+
 def distance(name):
     """
     Asks user for instruction file name and creates a list of list
