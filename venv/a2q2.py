@@ -5,7 +5,7 @@
 # Lab Section: 04
 
 # asks user for file name
-example = input("Enter file name: ")
+# example = input("Enter file name: ")
 
 
 def distance(name):
@@ -21,6 +21,7 @@ def distance(name):
     instructions = []
     f = open(name, 'r')
     r = f.read()
+    answer = []
     lines = r.splitlines()
     for x in lines:
         instructions.append(x.split())
@@ -30,9 +31,38 @@ def distance(name):
                 final += 1
             else:
                 final -= 1
-        print(abs(final))
+        answer.append(abs(final))
         final = 0
+    return answer
 
 
-distance(example)
+# distance(example)
 
+# Test Cases:
+def test_cases():
+    test_case = 'distance("example1.txt")'
+    input = 'example1.txt'
+    expected = [0, 4, 4, 2, 9, 8, 3, 9, 7, 3, 1, 0, 8]
+    output = distance(input)
+    if output != expected:
+        print("Test case {} failed on input {}, expected {}, "
+              "got {}".format(test_case, input, expected, output))
+    elif output == expected:
+        test_case = 'distance("example2.txt")'
+        input = 'example2.txt'
+        expected = [2, 10, 0, 4, 1, 4, 1, 3, 1, 8, 1, 2, 2, 0, 6, 1, 1, 0, 4, 3, 0, 2, 2]
+        output = distance(input)
+        if output != expected:
+            print("Test case {} failed on input {}, expected {}, "
+                  "got {}".format(test_case, input, expected, output))
+        elif output == expected:
+            test_case = 'distance("example3.txt")'
+            input = 'example3.txt'
+            expected = [1, 3, 9, 1, 2, 2, 3, 4]
+            output = distance(input)
+            if output != expected:
+                print("Test case {} failed on input {}, expected {}, "
+                      "got {}".format(test_case, input, expected, output))
+
+
+test_cases()
